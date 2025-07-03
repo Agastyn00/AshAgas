@@ -1,6 +1,6 @@
 from IPython.display import display, HTML
 
-page = """
+full_page = """
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
@@ -12,6 +12,11 @@ page = """
         color: #f0f0f0;
     }
 
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
     .navbar {
         background-color: rgba(10, 10, 10, 0.9);
         padding: 20px 50px;
@@ -19,6 +24,7 @@ page = """
         justify-content: space-between;
         align-items: center;
         border-bottom: 2px solid #00ffd5;
+        flex-wrap: wrap;
     }
 
     .navbar h1 {
@@ -30,7 +36,6 @@ page = """
     .navbar a {
         margin-left: 30px;
         color: white;
-        text-decoration: none;
         font-weight: bold;
         font-size: 16px;
         transition: color 0.3s;
@@ -59,18 +64,113 @@ page = """
         color: #ccc;
     }
 
-    .hero button {
+    .cta-button {
+        display: inline-block;
         padding: 15px 30px;
         font-size: 18px;
-        border: none;
         border-radius: 5px;
         background-color: #00ffd5;
         color: #000;
-        cursor: pointer;
+        font-weight: bold;
         transition: background 0.3s ease-in-out;
     }
 
-    .hero button:hover {
+    .cta-button:hover {
+        background-color: #00c3a5;
+    }
+
+    .section {
+        padding: 60px 40px;
+        text-align: center;
+    }
+
+    .section h3 {
+        font-size: 36px;
+        margin-bottom: 30px;
+        color: #00ffd5;
+    }
+
+    .gallery {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .gallery img {
+        width: 220px;
+        height: 220px;
+        border-radius: 10px;
+        object-fit: cover;
+        border: 2px solid #00ffd5;
+    }
+
+    .services, .testimonials {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .services ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .services li {
+        margin-bottom: 15px;
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .testimonial {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .testimonial p {
+        font-style: italic;
+        color: #ccc;
+    }
+
+    .testimonial span {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+        color: #00ffd5;
+    }
+
+    .contact-form {
+        max-width: 500px;
+        margin: auto;
+        text-align: left;
+    }
+
+    .contact-form label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+
+    .contact-form input, .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    .contact-form button {
+        background-color: #00ffd5;
+        color: #000;
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .contact-form button:hover {
         background-color: #00c3a5;
     }
 
@@ -82,22 +182,94 @@ page = """
         font-size: 14px;
         color: #aaa;
     }
+
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .navbar a {
+            margin: 10px 0 0 0;
+        }
+
+        .gallery {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+        }
+
+        .hero p {
+            font-size: 16px;
+        }
+    }
 </style>
 
 <div class="navbar">
     <h1>Ashagas 3D Printing</h1>
     <div>
         <a href="#">Home</a>
-        <a href="#">Products</a>
-        <a href="#">Services</a>
-        <a href="#">Contact us</a>
+        <a href="#products">Products</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact us</a>
     </div>
 </div>
 
 <div class="hero">
     <h2>Print Your Imagination</h2>
-    <p>in progress</p>
-    <button>Browse Our Work</button>
+    <p>Bring your ideas to life with cutting-edge 3D printing. Explore custom designs, prototypes, and more.</p>
+    <a href="#products" class="cta-button">Browse Our Work</a>
+</div>
+
+<div id="products" class="section">
+    <h3>Our Portfolio</h3>
+    <div class="gallery">
+        <img src="https://via.placeholder.com/220?text=Model+1" alt="3D Print 1">
+        <img src="https://via.placeholder.com/220?text=Model+2" alt="3D Print 2">
+        <img src="https://via.placeholder.com/220?text=Model+3" alt="3D Print 3">
+    </div>
+</div>
+
+<div id="services" class="section services">
+    <h3>Services</h3>
+    <ul>
+        <li>Custom 3D Design & Modeling</li>
+        <li>Prototype Manufacturing</li>
+        <li>Small-Batch Production</li>
+        <li>3D Scanning and Replication</li>
+        <li>Material Consulting & Finishing</li>
+    </ul>
+</div>
+
+<div class="section testimonials">
+    <h3>What Our Clients Say</h3>
+    <div class="testimonial">
+        <p>"Absolutely stunning quality! Ashagas turned my rough idea into a flawless prototype."</p>
+        <span>- Jordan T.</span>
+    </div>
+    <div class="testimonial">
+        <p>"They helped me design and print parts for my custom drone—professional and fast."</p>
+        <span>- Casey M.</span>
+    </div>
+</div>
+
+<div id="contact" class="section">
+    <h3>Contact Us</h3>
+    <div class="contact-form">
+        <label for="name">Name:</label>
+        <input id="name" type="text" placeholder="Your Name">
+        
+        <label for="email">Email:</label>
+        <input id="email" type="email" placeholder="Your Email">
+        
+        <label for="message">Message:</label>
+        <textarea id="message" rows="5" placeholder="Tell us about your project..."></textarea>
+        
+        <button>Send Message</button>
+    </div>
 </div>
 
 <div class="footer">
@@ -105,4 +277,4 @@ page = """
 </div>
 """
 
-display(HTML(page))
+display(HTML(full_page))
